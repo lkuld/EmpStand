@@ -1,5 +1,5 @@
 ---
-title: "Tutorial"
+title: "Erste Woche"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -10,9 +10,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-##  Erste Schritte
+##  R als Taschenrechner
 
-### R als Taschenrechner
+### Rechnen
 
 *Zunächst machen wir uns mit den Grundfunktionen vertraut. In den Kästchen kannst du beliebigen R code schreiben und dann ausführen. Es verhält sich also wie dein R-Skript (oben links in RStudio). Der Output unten verhält sich dazu wie deine Konsole (unten links in RStudio).*
 
@@ -22,15 +22,28 @@ Schreibe in das folgende Feld beliebige Rechnungen, z.B. `2+2` und klicke danach
 
 ```
 
-Was ist die Wurzel von 289? Wenn du einen Hinweis möchtest, kannst du auf Hint klicken. 
+Was ist $5^{3+4}$? Wenn du einen Hinweis möchtest, kannst du auf Hint klicken. 
+
+```{r hoch, exercise=TRUE}
+
+```
+
+```{r hoch-hint}
+5^(3+4)
+```
+
+
+Was ist die Wurzel von 289? Wenn du die Loesung möchtest, kannst du auf Solution klicken. 
 
 ```{r wurzel, exercise=TRUE}
 
 ```
 
-```{r wurzel-hint}
-sqrt(289)
+```{r wurzel-solution}
+sqrt(x)
 ```
+
+
 
 ### Ergebnisse speichern
 
@@ -72,7 +85,19 @@ y
 
 ### Funktionen
 
-Wir wollen nun eine neue Art von Objekt speichern: eine Funktion. Unsere Funktion soll uns für einen beliebigen Input $x_1$ den Wert $x_1+3$ ausgeben. Unsere Funktion ist also $f(x_1)=x_1+3$. Um Code über mehr als eine Zeile zusammen ausführen zu können, nutzen wir geschweifte Klammern `{}`. Die Hülle und Namen (PlusDrei) für unsere Funktion sind bereits im nächsten Kästchen gegeben.
+Wir wollen nun eine neue Art von Objekt speichern: eine Funktion. Funktionen nehmen einen input und ordnen ihm einen output zu. Die folgende ist ein Beispiel fuer eine lineare Fuktion: $f(x)=4x+3$. Um Code über mehr als eine Zeile zusammen ausführen zu können, nutzen wir geschweifte Klammern `{}`.
+
+```{r FunktionBsp, exercise=TRUE, exercise.preval=TRUE}
+LineareFunktion <- function(x){
+  4*x + 3
+}
+
+LineareFunktion(2)
+LineareFunktion(20)
+```
+
+
+Unsere eigene Funktion soll uns für einen beliebigen Input $x_1$ den Wert $x_1+3$ ausgeben. Unsere Funktion ist also $f(x_1)=x_1+3$.Die Hülle und Namen (PlusDrei) für unsere Funktion sind bereits im nächsten Kästchen gegeben.
 
 
 ```{r Funktion, exercise=TRUE, exercise.preval=TRUE}
@@ -142,7 +167,7 @@ Der Einfachheit wegen werden Vektoren dann meist in Listen gesammelt. Eine beson
 
 ```{r datenRahmen, exercise=TRUE, exercise.preval=TRUE}
 Nummernschild <- c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323")
-Automarke <- c("Kia","Toyota","Honda","KIA")
+Automarke <- c("Kia","Toyota","Honda","Kia")
 Farbe <- c("blau","gruen","gelb","grau")
 Anzahl_Raeder <- c(4,4,4,4)
 
@@ -155,7 +180,7 @@ Ein data.frame sieht also wie eine Tabelle oder Matrix aus. Wir können wie folg
 
 ```{r datenRahmenTeil, exercise=TRUE, exercise.preval=TRUE}
 Autos_Parkplatz <- data.frame(Nummernschild = c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323"),
-                              Automarke = c("Kia","Toyota","Honda","KIA"),
+                              Automarke = c("Kia","Toyota","Honda","Kia"),
                               Farbe = c("blau","gruen","gelb","grau"),
                               Anzahl_Raeder = c(4,4,4,4))
 Autos_Parkplatz[1,1]
@@ -163,4 +188,33 @@ Autos_Parkplatz[,3]
 Autos_Parkplatz[c(1,4),]
 
 ```
+
+Speicher nun alle Kias in einem neuen Datensatz indem du die Klammer nach Autos_Parkplatz ausfuellst.
+
+```{r Kia, exercise=TRUE, exercise.preval=TRUE}
+Autos_Parkplatz <- data.frame(Nummernschild = c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323"),
+                              Automarke = c("Kia","Toyota","Honda","Kia"),
+                              Farbe = c("blau","gruen","gelb","grau"),
+                              Anzahl_Raeder = c(4,4,4,4))
+
+Kias <- Autos_Parkplatz[,]
+
+
+```
+
+```{r Kia-solution}
+Autos_Parkplatz <- data.frame(Nummernschild = c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323"),
+                              Automarke = c("Kia","Toyota","Honda","Kia"),
+                              Farbe = c("blau","gruen","gelb","grau"),
+                              Anzahl_Raeder = c(4,4,4,4))
+
+# folgende Moeglichkeiten geben das gleiche Ergebnis
+Kias <- Autos_Parkplatz[c(1,4),]
+Kias <- Autos_Parkplatz[c(-2,-3),]
+Kias <- Autos_Parkplatz[-(2:3),]
+Kias <- Autos_Parkplatz[Autos_Parkplatz$Automarke=="Kia",]
+Kias <- Autos_Parkplatz[Autos_Parkplatz$Automarke%in%"Kia",]
+Kias
+```
+
 
