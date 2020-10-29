@@ -14,15 +14,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### R als Taschenrechner
 
-*Zunaechst machen wir uns mit den Grundfunktionen vertraut. In den Kaestchen kannst du beliebigen R code schreiben und dann ausfuehren. Es verhalet sich also wie dein R-Skript (oben links in RStudio). Der Outpur unten verhaelt sich dazu wie deine Konsole (unten links in RStudio).*
+*Zunächst machen wir uns mit den Grundfunktionen vertraut. In den Kästchen kannst du beliebigen R code schreiben und dann ausführen. Es verhält sich also wie dein R-Skript (oben links in RStudio). Der Output unten verhält sich dazu wie deine Konsole (unten links in RStudio).*
 
-Schreibe in das folgende Feld beliebige Rechnungen, z.B. `2+2` und klicke danach auf 'Run Code'. Falls du den Kasten neu beginnen moechtest, klicke auf Start Over. Was passiert, wenn du zwei Rechnungen in dieselbe Zeile schreibst oder untereinander?
+Schreibe in das folgende Feld beliebige Rechnungen, z.B. `2+2` und klicke danach auf 'Run Code'. Falls du den Kasten neu beginnen möchtest, klicke auf Start Over. Was passiert, wenn du zwei Rechnungen in dieselbe Zeile schreibst oder untereinander?
 
 ```{r herumrechnen, exercise=TRUE}
 
 ```
 
-Was ist die Wurzel von 289? Wenn du einen Hinweis moechtest, kannst du auf Hint klicken. 
+Was ist die Wurzel von 289? Wenn du einen Hinweis möchtest, kannst du auf Hint klicken. 
 
 ```{r wurzel, exercise=TRUE}
 
@@ -34,7 +34,7 @@ sqrt(289)
 
 ### Ergebnisse speichern
 
-Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitszeichen, also `x1 <- 2` oder `x1 = 2`. Addiere drei zu  x1 in der naechsten Zeile und speicher das Ergebnis als y.
+Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitszeichen, also `x1 <- 2` oder `x1 = 2`. Addiere drei zu  x1 in der nächsten Zeile und speicher das Ergebnis als y.
 
 
 ```{r speicher, exercise=TRUE}
@@ -55,7 +55,7 @@ Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitsz
 
 – John M. Chambers, nach https://de.wikipedia.org/wiki/R_(Programmiersprache)*
 
-Wir hatten oben bereits zwei neue Objekte definiert: x1 und y. Fuehre zunaechst den Code unten aus, wie gegeben. x1 und y werden dann zwar definiert, aber nicht ausgegeben. Um die Werte asuzugeben, schreibe den Variablennamen in eine leere Zeile darunter und fuehre dann den Code aus.
+Wir hatten oben bereits zwei neue Objekte definiert: x1 und y. Führe zunächst den Code unten aus, wie gegeben. x1 und y werden dann zwar definiert, aber nicht ausgegeben. Um die Werte auszugeben, schreibe den Variablennamen in eine leere Zeile darunter und führe dann den Code aus.
 
 ```{r Objekt, exercise=TRUE, exercise.preval=TRUE}
 x1 <- 2
@@ -72,7 +72,7 @@ y
 
 ### Funktionen
 
-Wir wollen nun eine neue Art von Objekt speichern: eine Funktion. Unsere Funktion soll uns fuer einen beliebigen input $x_1$ den Wert $x_1+3$ ausggeben. Unsere Funktion ist also $f(x_1)=x_1+3$. Um Code ueber mehr als eine Zeile zusammen ausfuehren zu koennen, nutzen wir geschweifte Klammern `{}`. Die Huelle und Namen (PlusDrei) fuer unsere Funktion sind bereits im naechsten Kaestchen gegeben.
+Wir wollen nun eine neue Art von Objekt speichern: eine Funktion. Unsere Funktion soll uns für einen beliebigen Input $x_1$ den Wert $x_1+3$ ausgeben. Unsere Funktion ist also $f(x_1)=x_1+3$. Um Code über mehr als eine Zeile zusammen ausführen zu können, nutzen wir geschweifte Klammern `{}`. Die Hülle und Namen (PlusDrei) für unsere Funktion sind bereits im nächsten Kästchen gegeben.
 
 
 ```{r Funktion, exercise=TRUE, exercise.preval=TRUE}
@@ -95,9 +95,9 @@ PlusDrei(99) + 4
 PlusDrei(x=99)
 ```
 
-Um die einzelnen Komponenten besser zu verstehen, veraendere die Bestandteile der Funktion und fuehere nach jedem Schritt den Code aus.
+Um die einzelnen Komponenten besser zu verstehen, verändere die Bestandteile der Funktion und führe nach jedem Schritt den Code aus.
 
-1. aendere den Buchstaben x (Variablenname), z.B. zu 'blau',
+1. ändere den Buchstaben x (Variablenname), z.B. zu 'blau',
 2. den Namen PlusDrei, 
 3. die Rechnung innerhalb der Funktion,
 4. entferne die geschweiften Klammern
@@ -118,11 +118,11 @@ PlusDreiOder(2)
 PlusDreiOder(99)
 ```
 
-Ein wichtiger Hinweis zu x und blau in der letzten Aufgabe ist, dass diese Variablen jeweils nur in der Funktion definiert sind. Man kann innerhalb einer Funktion auch auf Objekte zugreifen, die ausserhalb der Funktion gespeichert sind, das kann aber verwirrend sein.
+Ein wichtiger Hinweis zu x und blau in der letzten Aufgabe ist, dass diese Variablen jeweils nur in der Funktion definiert sind. Man kann innerhalb einer Funktion auch auf Objekte zugreifen, die außerhalb der Funktion gespeichert sind, das kann aber verwirrend sein.
 
 ## Vektoren, Matrizen, data.frames
 
-Ausser einzelnen Zahlen, koennen wir auch Vektoren, also mehrere Eintraege auf einmal speicherern. Das naechste Feld gibt dafuer ein Beispiel. `c` ist eine Funktion, die Werte in einen Vektor kombiniert.
+Außer einzelnen Zahlen, können wir auch Vektoren, also mehrere Einträge auf einmal speichern. Das nächste Feld gibt dafür ein Beispiel. `c` ist eine Funktion, die Werte in einen Vektor kombiniert.
 
 ```{r Vektoren, exercise=TRUE, exercise.preval=TRUE}
 ZahlenVektor <- c(4,4,6,1,4)
@@ -132,13 +132,13 @@ ZahlenVektor
 text_vektor
 ```
 
-Die beiden Vektoren stellen zwei uebliche Namenskonventionen dar. Namen geben idealler Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
+Die beiden Vektoren stellen zwei übliche Namenskonventionen dar. Namen geben idealer Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
 
-Im letztgen Kasten haten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter haeufige Datentypen: Faktoren und wahr/falsch-Eintraege. Faktoren betrachten wir spaeter, da der Umgang manchmal Probleme betrachtet.
+Im letzten Kasten hatten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter häufige Datentypen: Faktoren und wahr/falsch-Einträge. Faktoren betrachten wir später, da der Umgang manchmal Probleme betrachtet.
 
 ### data.frames
 
-Der Einfacheit wegen werden Vektoren dann meist in Listen gesammelt. Eine besondere Form der Listen und wohl die haeufigste Datenform in R ist ein data.frame, also Datenrahmen. Ein Datenrahmen ist eine Liste gleich langer Spaltenvektoren. Das ist praktisch, wenn z.B. jede Zeile eine Beobachtung darstellt und jede Spalte eine Auspraegung (Variable). Ein Beispiel ist im naechsten Kasten gegeben.
+Der Einfachheit wegen werden Vektoren dann meist in Listen gesammelt. Eine besondere Form der Listen und wohl die häufigste Datenform in R ist ein data.frame, also Datenrahmen. Ein Datenrahmen ist eine Liste gleich langer Spaltenvektoren. Das ist praktisch, wenn z.B. jede Zeile eine Beobachtung darstellt und jede Spalte eine Ausprägung (Variable). Ein Beispiel ist im nächsten Kasten gegeben.
 
 ```{r datenRahmen, exercise=TRUE, exercise.preval=TRUE}
 Nummernschild <- c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323")
@@ -151,7 +151,7 @@ Autos_Parkplatz
 
 ```
 
-Ein data.frame sieht also wie eine Tabelle oder Matrix aus. Wir koennen wie folt auf Teilmengen und einzelne Elemente zugreifen. `Autoparkplatz[i,j]` gibt uns die i-te Zeile und j-te Spalte.
+Ein data.frame sieht also wie eine Tabelle oder Matrix aus. Wir können wie folgt auf Teilmengen und einzelne Elemente zugreifen. `Autoparkplatz[i,j]` gibt uns die i-te Zeile und j-te Spalte.
 
 ```{r datenRahmenTeil, exercise=TRUE, exercise.preval=TRUE}
 Autos_Parkplatz <- data.frame(Nummernschild = c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323"),
@@ -163,5 +163,4 @@ Autos_Parkplatz[,3]
 Autos_Parkplatz[c(1,4),]
 
 ```
-
 
