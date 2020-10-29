@@ -1,0 +1,167 @@
+---
+title: "Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+##  Erste Schritte
+
+### R als Taschenrechner
+
+*Zunaechst machen wir uns mit den Grundfunktionen vertraut. In den Kaestchen kannst du beliebigen R code schreiben und dann ausfuehren. Es verhalet sich also wie dein R-Skript (oben links in RStudio). Der Outpur unten verhaelt sich dazu wie deine Konsole (unten links in RStudio).*
+
+Schreibe in das folgende Feld beliebige Rechnungen, z.B. `2+2` und klicke danach auf 'Run Code'. Falls du den Kasten neu beginnen moechtest, klicke auf Start Over. Was passiert, wenn du zwei Rechnungen in dieselbe Zeile schreibst oder untereinander?
+
+```{r herumrechnen, exercise=TRUE}
+
+```
+
+Was ist die Wurzel von 289? Wenn du einen Hinweis moechtest, kannst du auf Hint klicken. 
+
+```{r wurzel, exercise=TRUE}
+
+```
+
+```{r wurzel-hint}
+sqrt(289)
+```
+
+### Ergebnisse speichern
+
+Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitszeichen, also `x1 <- 2` oder `x1 = 2`. Addiere drei zu  x1 in der naechsten Zeile und speicher das Ergebnis als y.
+
+
+```{r speicher, exercise=TRUE}
+
+```
+
+```{r speicher-solution}
+  x1 <- 2
+  y <- x1 + 3
+```
+
+
+## Objekte und Funktionen
+
+* “To understand computations in R, two slogans are helpful: Everything that exists is an object. Everything that happens is a function call.”
+
+    „Um Berechnungen in R zu verstehen sind zwei Sätze hilfreich: Alles, was existiert, ist ein Objekt. Alles, was passiert, ist ein Funktionsaufruf.“
+
+– John M. Chambers, nach https://de.wikipedia.org/wiki/R_(Programmiersprache)*
+
+Wir hatten oben bereits zwei neue Objekte definiert: x1 und y. Fuehre zunaechst den Code unten aus, wie gegeben. x1 und y werden dann zwar definiert, aber nicht ausgegeben. Um die Werte asuzugeben, schreibe den Variablennamen in eine leere Zeile darunter und fuehre dann den Code aus.
+
+```{r Objekt, exercise=TRUE, exercise.preval=TRUE}
+x1 <- 2
+y <- x1 + 3
+```
+
+```{r Objekt-solution}
+x1 <- 2
+y <- x1 + 3
+
+x1
+y
+```
+
+### Funktionen
+
+Wir wollen nun eine neue Art von Objekt speichern: eine Funktion. Unsere Funktion soll uns fuer einen beliebigen input $x_1$ den Wert $x_1+3$ ausggeben. Unsere Funktion ist also $f(x_1)=x_1+3$. Um Code ueber mehr als eine Zeile zusammen ausfuehren zu koennen, nutzen wir geschweifte Klammern `{}`. Die Huelle und Namen (PlusDrei) fuer unsere Funktion sind bereits im naechsten Kaestchen gegeben.
+
+
+```{r Funktion, exercise=TRUE, exercise.preval=TRUE}
+PlusDrei <- function(x){
+  
+}
+
+PlusDrei(2)
+PlusDrei(99) + 4
+PlusDrei(x=99)
+```
+
+```{r Funktion-solution}
+PlusDrei <- function(x){
+  x+3
+}
+
+PlusDrei(2)
+PlusDrei(99) + 4
+PlusDrei(x=99)
+```
+
+Um die einzelnen Komponenten besser zu verstehen, veraendere die Bestandteile der Funktion und fuehere nach jedem Schritt den Code aus.
+
+1. aendere den Buchstaben x (Variablenname), z.B. zu 'blau',
+2. den Namen PlusDrei, 
+3. die Rechnung innerhalb der Funktion,
+4. entferne die geschweiften Klammern
+
+```{r Funktion2, exercise=TRUE, exercise.preval=TRUE}
+PlusDrei <- function(x){
+  x+3
+}
+
+PlusDrei(2)
+PlusDrei(99)
+```
+
+```{r Funktion2-solution}
+PlusDreiOder <- function(blau)  blau*3 - 4
+
+PlusDreiOder(2)
+PlusDreiOder(99)
+```
+
+Ein wichtiger Hinweis zu x und blau in der letzten Aufgabe ist, dass diese Variablen jeweils nur in der Funktion definiert sind. Man kann innerhalb einer Funktion auch auf Objekte zugreifen, die ausserhalb der Funktion gespeichert sind, das kann aber verwirrend sein.
+
+## Vektoren, Matrizen, data.frames
+
+Ausser einzelnen Zahlen, koennen wir auch Vektoren, also mehrere Eintraege auf einmal speicherern. Das naechste Feld gibt dafuer ein Beispiel. `c` ist eine Funktion, die Werte in einen Vektor kombiniert.
+
+```{r Vektoren, exercise=TRUE, exercise.preval=TRUE}
+ZahlenVektor <- c(4,4,6,1,4)
+text_vektor <- c("Haus","Baum","cfdvdf","3","Eins")
+
+ZahlenVektor
+text_vektor
+```
+
+Die beiden Vektoren stellen zwei uebliche Namenskonventionen dar. Namen geben idealler Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
+
+Im letztgen Kasten haten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter haeufige Datentypen: Faktoren und wahr/falsch-Eintraege. Faktoren betrachten wir spaeter, da der Umgang manchmal Probleme betrachtet.
+
+### data.frames
+
+Der Einfacheit wegen werden Vektoren dann meist in Listen gesammelt. Eine besondere Form der Listen und wohl die haeufigste Datenform in R ist ein data.frame, also Datenrahmen. Ein Datenrahmen ist eine Liste gleich langer Spaltenvektoren. Das ist praktisch, wenn z.B. jede Zeile eine Beobachtung darstellt und jede Spalte eine Auspraegung (Variable). Ein Beispiel ist im naechsten Kasten gegeben.
+
+```{r datenRahmen, exercise=TRUE, exercise.preval=TRUE}
+Nummernschild <- c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323")
+Automarke <- c("Kia","Toyota","Honda","KIA")
+Farbe <- c("blau","gruen","gelb","grau")
+Anzahl_Raeder <- c(4,4,4,4)
+
+Autos_Parkplatz <- data.frame(Nummernschild,Automarke,Farbe,Anzahl_Raeder)
+Autos_Parkplatz
+
+```
+
+Ein data.frame sieht also wie eine Tabelle oder Matrix aus. Wir koennen wie folt auf Teilmengen und einzelne Elemente zugreifen. `Autoparkplatz[i,j]` gibt uns die i-te Zeile und j-te Spalte.
+
+```{r datenRahmenTeil, exercise=TRUE, exercise.preval=TRUE}
+Autos_Parkplatz <- data.frame(Nummernschild = c("DO KL 345","DO EE 3","DO LL 1234","BO G 2323"),
+                              Automarke = c("Kia","Toyota","Honda","KIA"),
+                              Farbe = c("blau","gruen","gelb","grau"),
+                              Anzahl_Raeder = c(4,4,4,4))
+Autos_Parkplatz[1,1]
+Autos_Parkplatz[,3]
+Autos_Parkplatz[c(1,4),]
+
+```
+
+
