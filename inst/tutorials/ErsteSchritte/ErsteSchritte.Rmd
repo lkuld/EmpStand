@@ -159,7 +159,7 @@ text_vektor
 
 Die beiden Vektoren stellen zwei übliche Namenskonventionen dar. Namen geben idealer Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
 
-Im letzten Kasten hatten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter häufige Datentypen: Faktoren und wahr/falsch-Einträge. Faktoren betrachten wir später, da der Umgang manchmal Probleme betrachtet.
+Im letzten Kasten hatten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter häufige Datentypen: Faktoren und wahr/falsch-Einträge. Diese Typen betrachten wir ein anderes Mal.
 
 ### data.frames
 
