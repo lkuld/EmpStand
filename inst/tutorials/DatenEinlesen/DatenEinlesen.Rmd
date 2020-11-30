@@ -1,0 +1,131 @@
+---
+title: "Daten einlesen"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(EmpStand)
+library(reshape2)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+##  Datensaetze in R
+
+Daten sind Informationen, die wir fuer eine folgende Analyse gesammelt wurden. Ein Standardformat fuer die statistische Analyse ist eine Tabelle in der die Reihen Beobachtungen verschiedener Variablen sind. Jede Spalte ist also eine Variable, z.B. ein Name oder das Gewicht der Beobachtung.
+
+Unser erster Datensatz ist eine Tabelle mit Stadtgroessen zwischen 800 und 1850 zuerst beschrieben in "La Population Des Villes Europeennes" (Bairoch, Batou, Chevre 1988). Der Datensatz ist im Paket integriert. Wie wir Daten von anderen Quellen einlesen koennen, sehen wir uns spaeter an. Der Name des Datensatzes ist Bairoch_1988. Gib dir den Datensatz im naechsten Kaestchen aus. 
+
+
+```{r DatenAnschauen, exercise=TRUE}
+
+```
+
+Was zunaechst auffaellt sind die vielen `NA` Beobachtungen. Das steht fuer _Not Available_, also fehlendem Wert in dieser Zelle. Ursache kann auch ein unsinniger Datentyp sein,  z.B. eine numerisches Wort:`as.numeric("rot")` vs. `as.numeric("3")`.
+
+
+Wie gross ist unser Datensatz? Probiere es mit `length(Bairoch_1988)`. Das Ergebnis zeigt, dass der Datensatz eine Kombination von 14 Variablen ist. Alle haben die gleiche Laenge, aber koennen unterschiedlichet Typen (Text, Zahlen, ...) haben. Das Format ist das Standardformat in R: ein `data.frame`. Die Anzahl der Reihen bekommen wir per `nrow(Bairoch_1988)`. Die Namen der Variablen per `names(Bairoch_1988)`. `summary(Bairoch_1988)` gibt einen Ueberblick fuer alle Variablen.
+
+```{r Laenge, exercise=TRUE}
+
+```
+
+<br>
+
+Als naechstes wollen wir auf einzelne Reihen und Spalten zugreifen. Das geht per Zahl oder Name: `data.frame[Zeile,Spalte]` also `Bairoch_1988[1:4,c(2,4)]` oder `Bairoch_1988[1:4,c("city","X900")]`. Beachte, dass wir auf einzelne Variablen per `Bairoch_1988[,"city"]` oder `Bairoch_1988$city` zugreifen koennen. Bairoch_1988["city"] ergibt stattdessen ein `data.frame` mit einer Spalte (Unterschied ist Komma).
+
+```{r Teile, exercise=TRUE}
+
+```
+
+
+Hauefig wollen wir auf eine bestimmte Teilmenge zugreifen. Z.B. alle Staedte in Deutschland. Dafuer definieren wir eine Bedingung, die uns einen Vektor von `TRUE` und `FALSE` Eintraegen gibt. 
+
+
+```{r wahr, exercise=TRUE}
+
+farben <- c("rot", "blau", "rot", "gelb")
+farben == "rot"
+farben %in% c("rot", "blau")
+
+farben[farben == "rot"]
+```
+
+Gib im naechsten Kasten alle Beobachtungen aus Deutschland in Bairoch_1988 aus.
+
+
+```{r Deutschland, exercise=TRUE}
+
+
+```
+
+```{r Deutschland-solution}
+
+Bairoch_1988[Bairoch_1988$country == "Germany",]
+```
+
+
+
+##  Variablen manipulieren
+
+Wir werden jetzt Variablen miteinander verrechnen. Zunaechst moechten wir die Stadtgroesse 1850 in hunderttausend statt tausend Einwohnern zaehlen. Die neue Variable soll `Jahr_1850_hunderttausend` heissen.
+
+```{r hunderttausend, exercise=TRUE}
+
+
+```
+
+```{r hunderttausend-solution}
+Bairoch_1988$Jahr_1850_hunderttausend <- Bairoch_1988$X1850 / 100
+
+```
+
+
+Die naechste Variable solll jeden Wert in 1850 als Prozent der Gesamtmenge anzeigen. Die neue Variable soll `Jahr_1850_prozent` heissen.
+
+```{r prozent, exercise=TRUE}
+
+
+```
+
+```{r prozent-solution}
+Bairoch_1988$Jahr_1850_hunderttausend <- (Bairoch_1988$X1850 / sum(Bairoch_1988$X1850, na.rm = TRUE))*100
+
+```
+
+Nun wollen wir die Bevoelkerungsdifferenz zwischen 1850 und 1800 berechnen und zwar absolut und prozentual.
+
+```{r Wachstum, exercise=TRUE}
+
+
+```
+
+```{r Wachstum-solution}
+Bairoch_1988$Wachstum_1800_1850 <- Bairoch_1988$X1850 - Bairoch_1988$X1800
+
+Bairoch_1988$Wachstum_1800_1850_prozentual <- 100*(Bairoch_1988$X1850 - Bairoch_1988$X1800)/Bairoch_1988$X1800
+```
+
+
+
+
+##  Format  aendern
+
+Als naechstes aendern wir das Datenformat. Statt verschiedener Jahresvariablen, wollen wir Jahr als Variable haben. Dafuer nutzten wir die Funktion `melt()` aus dem Paket `reshape2`. Also weniger Variblen, aber mehr Reihen. Dafuer wird das Format auch `long` genannt. Wir behalten `country` und `city` zur Identifikation.
+
+```{r melt, exercise=TRUE}
+Bairoch_long <- melt(Bairoch_1988, id.vars = c("country","city"))
+Bairoch_long
+```
+
+Nun wollen wir die Daten aufaggregieren und zwar die Summe der Stadtbevoelkerung per Land und Jahr. Wir nutzen die Funktion `aggregate(formula, data, FUN, ...,  subset, na.action = na.omit)`. `data` ist unser Datensatz, `FUN` ist dann `sum`, subset brauchen wir nicht. `formula` hat das Format `zu veraendernde Variable ~ Klassifikaiontsvariable1 + Klassifikaiontsvariable2`.
+
+```{r agg, exercise=TRUE}
+Bairoch_long <- melt(Bairoch_1988, id.vars = c("country","city"))
+names(Bairoch_long)
+
+Bairoch_agg <- aggregate(value ~ country + variable , data=Bairoch_long, FUN = sum)
+Bairoch_agg
+```
