@@ -9,7 +9,6 @@ library(learnr)
 library(EmpStand)
 library(ggplot2)
 library(stringr)
-library(sf)
 library(reshape2)
 
 bairoch <- melt(Bairoch_1988, id.vars = c("country","city"))
@@ -24,15 +23,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## ggplot2
 
-***Ziel des Tutorials ist es einen Einblick in Grafiken mit Hilfe des Pakets ggplots2 in R zu geben. Für mehr Tipps und Hintergrundwissen zu Grafiken allgemein empfehle ich https://ggplot2-book.org. Für 'Kochrezepte' für Graphiken in R, empfehle ich https://r-graphics.org/.***
+***Ziel des Tutorials ist es einen Einblick in Grafiken mit Hilfe des Pakets ggplots2 in R zu geben. Für mehr Tipps und Hintergrundwissen zu Grafiken allgemein, empfehle ich https://ggplot2-book.org. Für 'Kochrezepte' für Graphiken in R, empfehle ich https://r-graphics.org/.***
 
-***Die folgenden Pakete sind bereits geladen: EmpStand, stringr, ggplot2 und sf (Karten).***
+***Die folgenden Pakete sind bereits geladen: EmpStand, stringr und ggplot2.***
 
-ggplot2 (Prinzip basierend auf Leland Wilkinson, The Grammar of Graphics, Springer, 1999, deswegen 'gg')  bietet eine riesige Anzahl statischer Graphiken, z.B. Histogramme, Karten und scatterplots, um Datensätze zu veranschaulichen.
+ggplot2 (Prinzip basierend auf Leland Wilkinson, The Grammar of Graphics, Springer, 1999, deswegen 'gg')  bietet eine riesige Anzahl Grafiken, z.B. Histogramme, Karten und scatterplots, um Datensätze zu veranschaulichen (statisch, also keine Animationen/Videos).
 
-Das Grundprinzip ist, dass wir nacheinander verschiedene _Layer_ definieren. Z.B. starten wir mit einem leeren Kaste in den wir dann Linien und Punkte einzeichnen.
+Das Grundprinzip ist, dass wir nacheinander verschiedene _Layer_ definieren. Z.B. starten wir mit einem leeren Kasten, in den wir dann Linien und Punkte einzeichnen.
 
-Schauen wir uns nochmal den Bairoch Datensatz zu Bevolkerungsgroesse an.
+Schauen wir uns nochmal den Bairoch Datensatz zu Bevölkerungsgröße an.
 
 ```{r Daten, exercise=TRUE}
 
