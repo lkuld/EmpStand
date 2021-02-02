@@ -19,8 +19,8 @@ bairoch$variable <- NULL
 
 bairoch <- bairoch[!is.na(bairoch$population),]
 bairoch <- bairoch[bairoch$city%in%bairoch$city[bairoch$population%in%100:500&bairoch$year==1850] & bairoch$year>1100  ,]
+set.seed(1)
 bairoch$year2 <- bairoch$year + rnorm(nrow(bairoch), 0, 30)
-bairoch$population2 <- sapply(bairoch$population, function(x) min(x,500))
 
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -82,13 +82,13 @@ reg <- lm(population ~ year2, data = bairoch)
 reg
 ```
 
-Wir sehen also, dass unsere lineare Funktion $Bevölkerung = -250.9478 + 0.2053 \; Jahr$ lautet, d.h. jedes Jahr steigt die Bevölkerungszahl um 0.2053 (tausend). Der y-Achsenabschnitt (*intercept*) ist -250.9478.
+Wir sehen also, dass unsere lineare Funktion $Bevölkerung = -262,9801 + 0,2124 \; Jahr$ lautet, d.h. jedes Jahr steigt die Bevölkerungszahl um 0,2124 (tausend). Der y-Achsenabschnitt (*intercept*) ist -262,9801.
 
 ## OLS
 
 Wie wurde diese Gleichung geschätzt? Das Prinzip von OLS (*ordinary least squares* oder gewöhnliche Methode der kleinsten Quadrate) ist, dass die Summe der quadrierten Abweichungen zwischen geschätztem und tatsächlichem Wert minimiert wird. 
 
-Z.B. hat Birmingham 1850 233 tausend Einwohner (nennen wir jetzt $y_i=233$, mit $i$ als 1850 Birmingham). Die geschätzte Zahl für eine Stadt 1850 ist aber $-250.9478 + 0.2053 \times 1850 = 128.8572$ (nennen wir $\hat{y_i} = \hat{a}+\hat{b}x_i$). Die Abweichung beträgt also $233 - 128.8572 = 104.1428$ und im Quadrat dann $104.1428^2=10845.72$. 
+Z.B. hat Birmingham 1850 233 tausend Einwohner (nennen wir jetzt $y_i=233$, mit $i$ als 1850 Birmingham). Die geschätzte Zahl für eine Stadt 1850 ist aber $-262,9801 + 0,2124 \times 1850 = 129.9599$ (nennen wir $\hat{y_i} = \hat{a}+\hat{b}x_i$). Die Abweichung beträgt also $233 - 129,9599 = 103,0401$ und im Quadrat dann $103,0401^2=10617,26$. 
 
 Wenn wir das für alle Beobachtungen durchgehen haben wir die Summe der quadrierten Abweichungen. Das schreibt man mit dem Summenzeichen $\sum$, als $\sum_{i=1}^n{(y_i-\hat{y_i})^2}=(y_1-\hat{y_1})^2 + (y_2-\hat{y_2})^2 + \ldots + (y_n-\hat{y_n})^2$ fuer alle $n$ Städte (jedes $i$ steht fuer eine Beobachtung, also hier eine Stadt in einem Jahr).
 
@@ -111,7 +111,7 @@ summary(reg)
 
 Wir interessieren uns insbesondere für das Verhältnis der Koeffizienten ($a$ und $b$) zu den zugehörigen Standardfehlern. Wie andere Standardfehler sind diese eine Maß dafür, wie sich die Koeffizienten ändern könnten, falls die Daten nochmal aus derselben Verteilung gezogen werden (hier: alternative Welt, $\ldots$). Anders ausgedrückt: wie präzise die Schätzung ist. 
 
-Die letzte Spalte (p-Werte, $Pr(>|t|)$) gibt an, wie oft wir einen Koeffizienten soweit von null entfernt beobachten (z.B. mehr als 0.20528 oder weniger als - 0.20528 für year2), wenn der wahre Wert null ist, den angegebenen Standardfehler hat (0.01911) und einer t-Verteilung mir den angegebenen Freiheitsgraden folgt (ähnlich einer Normalverteilung falls wir nicht sehr wenige Beobachtungen haben). Anders ausgedrückt: Wie 'wahrscheinlich' ist es, dass unser Effekt größer (oder kleiner) null ist. Wichtig ist, dass alle Zahlen innerhalb des Models gelten, d.h. falls alle Annahmen korrekt sind, wie z.B. Unabhängigkeit der Beobachtungen.
+Die letzte Spalte (p-Werte, $Pr(>|t|)$) gibt an, wie oft wir einen Koeffizienten soweit von null entfernt beobachten (z.B. mehr als 0,2124 oder weniger als - 0,2124 für year2), wenn der wahre Wert null ist, den angegebenen Standardfehler hat (0,01923) und einer t-Verteilung mir den angegebenen Freiheitsgraden folgt (ähnlich einer Normalverteilung falls wir nicht sehr wenige Beobachtungen haben). Anders ausgedrückt: Wie 'wahrscheinlich' ist es, dass unser Effekt größer (oder kleiner) null ist. Wichtig ist, dass alle Zahlen innerhalb des Models gelten, d.h. falls alle Annahmen korrekt sind, wie z.B. Unabhängigkeit der Beobachtungen.
 
 
 ## Mehrere unabhängige Variablen
