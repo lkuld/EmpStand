@@ -160,12 +160,12 @@ Abb</code></pre>
 reg</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
-<p>Wir sehen also, dass unsere lineare Funktion <span class="math inline">\(Bevölkerung = -250.9478 + 0.2053 \; Jahr\)</span> lautet, d.h. jedes Jahr steigt die Bevölkerungszahl um 0.2053 (tausend). Der y-Achsenabschnitt (<em>intercept</em>) ist -250.9478.</p>
+<p>Wir sehen also, dass unsere lineare Funktion <span class="math inline">\(Bevölkerung = -262,9801 + 0,2124 \; Jahr\)</span> lautet, d.h. jedes Jahr steigt die Bevölkerungszahl um 0,2124 (tausend). Der y-Achsenabschnitt (<em>intercept</em>) ist -262,9801.</p>
 </div>
 <div id="section-ols" class="section level2">
 <h2>OLS</h2>
 <p>Wie wurde diese Gleichung geschätzt? Das Prinzip von OLS (<em>ordinary least squares</em> oder gewöhnliche Methode der kleinsten Quadrate) ist, dass die Summe der quadrierten Abweichungen zwischen geschätztem und tatsächlichem Wert minimiert wird.</p>
-<p>Z.B. hat Birmingham 1850 233 tausend Einwohner (nennen wir jetzt <span class="math inline">\(y_i=233\)</span>, mit <span class="math inline">\(i\)</span> als 1850 Birmingham). Die geschätzte Zahl für eine Stadt 1850 ist aber <span class="math inline">\(-250.9478 + 0.2053 \times 1850 = 128.8572\)</span> (nennen wir <span class="math inline">\(\hat{y_i} = \hat{a}+\hat{b}x_i\)</span>). Die Abweichung beträgt also <span class="math inline">\(233 - 128.8572 = 104.1428\)</span> und im Quadrat dann <span class="math inline">\(104.1428^2=10845.72\)</span>.</p>
+<p>Z.B. hat Birmingham 1850 233 tausend Einwohner (nennen wir jetzt <span class="math inline">\(y_i=233\)</span>, mit <span class="math inline">\(i\)</span> als 1850 Birmingham). Die geschätzte Zahl für eine Stadt 1850 ist aber <span class="math inline">\(-262,9801 + 0,2124 \times 1850 = 129.9599\)</span> (nennen wir <span class="math inline">\(\hat{y_i} = \hat{a}+\hat{b}x_i\)</span>). Die Abweichung beträgt also <span class="math inline">\(233 - 129,9599 = 103,0401\)</span> und im Quadrat dann <span class="math inline">\(103,0401^2=10617,26\)</span>.</p>
 <p>Wenn wir das für alle Beobachtungen durchgehen haben wir die Summe der quadrierten Abweichungen. Das schreibt man mit dem Summenzeichen <span class="math inline">\(\sum\)</span>, als <span class="math inline">\(\sum_{i=1}^n{(y_i-\hat{y_i})^2}=(y_1-\hat{y_1})^2 + (y_2-\hat{y_2})^2 + \ldots + (y_n-\hat{y_n})^2\)</span> fuer alle <span class="math inline">\(n\)</span> Städte (jedes <span class="math inline">\(i\)</span> steht fuer eine Beobachtung, also hier eine Stadt in einem Jahr).</p>
 <p>Wir können jetzt <span class="math inline">\(\hat{y_i}\)</span> als <span class="math inline">\(a+bx_i\)</span> schreiben, um die Summe als eine Funktion von <span class="math inline">\(a\)</span> und <span class="math inline">\(b\)</span> auszudrücken. <span class="math inline">\(\sum_{i=1}^n{(y_i-\hat{y_i})^2} = \sum_{i=1}^n{(y_i-(a+bx_i))^2}=f(a,b)\)</span>. Diese Summe können wir minimieren (“ach a und b ableiten, null-setzten und Gleichungen lösen”) und bekommen Schätzungen für <span class="math inline">\(a\)</span> und <span class="math inline">\(b\)</span>, also <span class="math inline">\(\hat{a}\)</span> und <span class="math inline">\(\hat{b}\)</span> (<span class="math inline">\(\overline{x}=\frac{1}{n}\sum_{i=1}^n{x_i}\)</span>, der Mittelwert).</p>
 <ul>
@@ -183,7 +183,7 @@ summary(reg)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 <p>Wir interessieren uns insbesondere für das Verhältnis der Koeffizienten (<span class="math inline">\(a\)</span> und <span class="math inline">\(b\)</span>) zu den zugehörigen Standardfehlern. Wie andere Standardfehler sind diese eine Maß dafür, wie sich die Koeffizienten ändern könnten, falls die Daten nochmal aus derselben Verteilung gezogen werden (hier: alternative Welt, <span class="math inline">\(\ldots\)</span>). Anders ausgedrückt: wie präzise die Schätzung ist.</p>
-<p>Die letzte Spalte (p-Werte, <span class="math inline">\(Pr(&gt;|t|)\)</span>) gibt an, wie oft wir einen Koeffizienten soweit von null entfernt beobachten (z.B. mehr als 0.20528 oder weniger als - 0.20528 für year2), wenn der wahre Wert null ist, den angegebenen Standardfehler hat (0.01911) und einer t-Verteilung mir den angegebenen Freiheitsgraden folgt (ähnlich einer Normalverteilung falls wir nicht sehr wenige Beobachtungen haben). Anders ausgedrückt: Wie ‘wahrscheinlich’ ist es, dass unser Effekt größer (oder kleiner) null ist. Wichtig ist, dass alle Zahlen innerhalb des Models gelten, d.h. falls alle Annahmen korrekt sind, wie z.B. Unabhängigkeit der Beobachtungen.</p>
+<p>Die letzte Spalte (p-Werte, <span class="math inline">\(Pr(&gt;|t|)\)</span>) gibt an, wie oft wir einen Koeffizienten soweit von null entfernt beobachten (z.B. mehr als 0,2124 oder weniger als - 0,2124 für year2), wenn der wahre Wert null ist, den angegebenen Standardfehler hat (0,01923) und einer t-Verteilung mir den angegebenen Freiheitsgraden folgt (ähnlich einer Normalverteilung falls wir nicht sehr wenige Beobachtungen haben). Anders ausgedrückt: Wie ‘wahrscheinlich’ ist es, dass unser Effekt größer (oder kleiner) null ist. Wichtig ist, dass alle Zahlen innerhalb des Models gelten, d.h. falls alle Annahmen korrekt sind, wie z.B. Unabhängigkeit der Beobachtungen.</p>
 </div>
 <div id="section-mehrere-unabhängige-variablen" class="section level2">
 <h2>Mehrere unabhängige Variablen</h2>
@@ -198,8 +198,9 @@ reg &lt;- lm(qm ~ population + year2, data = bairoch)
 summary(reg)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
-<p>Der Output zeigt, dass unsere Schätzung recht präzise ist (<span class="math inline">\(5.010e-01= 0,5010\)</span>). Die Sterne geben an ob die p-Werte (<span class="math inline">\(Pr(&gt;|t|)\)</span>) kleiner als 0,1, 0,05, 0,01 oder 0,001 ist. Alle Koeffizienten sind bei einem Signifikanzniveau von 0,001 von 0 unterschiedlich.</p>
-<p>Ein Anstieg von population um eins (tausend Einwohner*innen mehr) erhöht den Quadratmeterpreis um 0,5010. Ein Anstieg von year2 um eins (ein Jahr später) erhöht den Quadratmeterpreis um 0,7997.</p>
+<p>Der Output zeigt, dass unsere Schätzung recht präzise ist. Der theoretische Wert aus der Simulation für ‘population’ war z.B. <span class="math inline">\(0,5\)</span>, der geschätzte Wert ist <span class="math inline">\(0,5009\)</span> (<span class="math inline">\(5.009e-01= 0,5009\)</span>).</p>
+<p>Die Sterne geben an, ob die p-Werte (<span class="math inline">\(Pr(&gt;|t|)\)</span>) kleiner als 0,1, 0,05, 0,01 oder 0,001 sind. Es folgt, dass alle Koeffizienten bei einem Signifikanzniveau von 0,001 signifikant unterschiedlich zu null sind, d.h. positiv in diesem Fall.</p>
+<p>Ein Anstieg von population um eins (tausend Einwohner*innen mehr) erhöht den Quadratmeterpreis um 0,5009. Ein Anstieg von year2 um eins (ein Jahr später) erhöht den Quadratmeterpreis um 0,7998.</p>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -216,8 +217,8 @@ bairoch$variable <- NULL
 
 bairoch <- bairoch[!is.na(bairoch$population),]
 bairoch <- bairoch[bairoch$city%in%bairoch$city[bairoch$population%in%100:500&bairoch$year==1850] & bairoch$year>1100  ,]
+set.seed(1)
 bairoch$year2 <- bairoch$year + rnorm(nrow(bairoch), 0, 30)
-bairoch$population2 <- sapply(bairoch$population, function(x) min(x,500))
 
 knitr::opts_chunk$set(echo = FALSE)
 </script>

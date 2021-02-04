@@ -129,10 +129,12 @@ reg <- lm(qm ~ population + year2, data = bairoch)
 summary(reg)
 ```
 
-Der Output zeigt, dass unsere Schätzung recht präzise ist ($5.010e-01= 0,5010$). Die Sterne geben an ob die p-Werte ($Pr(>|t|)$) kleiner als 0,1, 0,05, 0,01 oder 0,001 ist. Alle Koeffizienten sind bei einem Signifikanzniveau von 0,001 von 0 unterschiedlich.
+Der Output zeigt, dass unsere Schätzung recht präzise ist. Der theoretische Wert aus der Simulation für 'population' war z.B. $0,5$, der geschätzte Wert ist $0,5009$ ($5.009e-01= 0,5009$). 
 
-Ein Anstieg von population um eins (tausend Einwohner*innen mehr) erhöht den Quadratmeterpreis um 0,5010.
-Ein Anstieg von year2 um eins (ein Jahr später) erhöht den Quadratmeterpreis um 0,7997.
+Die Sterne geben an, ob die p-Werte ($Pr(>|t|)$) kleiner als 0,1, 0,05, 0,01 oder 0,001 sind. Es folgt, dass alle Koeffizienten bei einem Signifikanzniveau von 0,001 signifikant unterschiedlich zu null sind, d.h. positiv in diesem Fall.
+
+Ein Anstieg von population um eins (tausend Einwohner*innen mehr) erhöht den Quadratmeterpreis um 0,5009.
+Ein Anstieg von year2 um eins (ein Jahr später) erhöht den Quadratmeterpreis um 0,7998.
 
 
 
