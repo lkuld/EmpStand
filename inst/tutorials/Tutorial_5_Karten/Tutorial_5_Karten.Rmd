@@ -1,0 +1,24 @@
+---
+title: "Teil 5: Karten mit sf und ggplot2"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(EmpStand)
+library(ggplot2)
+library(stringr)
+library(reshape2)
+library(sf)
+
+
+conf1820 <- st_read("Data/mapData/GerConf1820/GHGIS1820GERMANCONFED.shp")
+
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+MAP cc: https://geodata.lib.berkeley.edu/catalog/GHGIS1820CORE

@@ -25,7 +25,7 @@ Zunächst simulieren wir einen Würfel mit sechs Zahlen, die alle gleich wahrsch
 
 ```{r Wuerfel, exercise=TRUE, exercise.eval=TRUE}
 x1 <- 1:6 # Anmerkung: 1:6 gibt uns einen Vektor von 1 bis 6, also 1:6 ist c(1,2,3,4,5,6)
-sample(x1,3) # hier werden die Bestandteile der Funktion per Stelle erkannt. Wir könnten auch sample(x=x1,size=3) oder sample(size=3, x=x1) schreiben, nicht aber sample(3,x1) 
+sample(x1,3) # hier werden die Bestandteile der Funktion per Reihenfolge erkannt. Wir könnten auch sample(x=x1,size=3) oder sample(size=3, x=x1) schreiben, nicht aber sample(3,x1) 
 ```
 
 R hat verschiedene Zufallsalgorithmen implementiert. Wie bei allen Funktionen, können Details per Fragezeichen abgerufen werden, also `?sample`. Falls wir für eine Simulation immer dasselbe Ergebnis haben wollen, können wir den Zufallsalgorithmus per `set.seed(seed)` initiieren. Klicke mehrfach auf Run Code und verändere die Parameter (Inputs).
