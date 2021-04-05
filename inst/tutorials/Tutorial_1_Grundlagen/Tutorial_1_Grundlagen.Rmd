@@ -1,5 +1,5 @@
 ---
-title: "Erste Woche"
+title: "Teil 1: Grundlagen"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -47,7 +47,7 @@ sqrt(x)
 
 ### Ergebnisse speichern
 
-Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitszeichen, also `x1 <- 2` oder `x1 = 2`. Addiere drei zu  x1 in der nächsten Zeile und speicher das Ergebnis als y.
+Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitszeichen, also `x1 <- 2` oder `x1 = 2`. Addiere drei zu  x1 in der nächsten Zeile und speicher das Ergebnis als y. Was ist y?
 
 
 ```{r speicher, exercise=TRUE}
@@ -57,6 +57,7 @@ Speicher die Zahl 2 unter dem Namen x1. Das geht per Pfeil oder per Gleichheitsz
 ```{r speicher-solution}
   x1 <- 2
   y <- x1 + 3
+  y
 ```
 
 

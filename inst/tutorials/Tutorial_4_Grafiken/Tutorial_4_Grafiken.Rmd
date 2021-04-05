@@ -1,5 +1,5 @@
 ---
-title: "Grafiken in R mit ggplot2"
+title: "Teil 4: Grafiken mit ggplot2"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
