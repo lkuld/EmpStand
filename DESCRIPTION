@@ -1,13 +1,13 @@
 Package: EmpStand
-Title: Bietet tutorials und Material fuer Empirische Standortstruktur 
+Title: R tutorials fuer Empirische Standortforschung und Humankapital (TU Dortmund)
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Lukas",
            family = "Kuld",
            role = c("aut", "cre"),
-           email = "lukas.kuld@udo.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "lukas.kuld@udo.edu")
+Description: Bietet eine R-Einfuehrung und Material fuer Kurse an der TU Dortmund.
+Imports: learnr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
