@@ -158,7 +158,7 @@ ZahlenVektor
 text_vektor
 ```
 
-Die beiden Vektoren stellen zwei übliche Namenskonventionen dar. Namen geben idealer Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
+Die beiden Vektoren stellen zwei übliche Namenskonventionen dar, also Wörter per Unterstrich getrennt oder mit Großbuchstaben markiert. Namen geben idealer Weise an, was das Objekt beinhaltet, z.B. KoerperGroesse, bip_nominal oder wie oben PlusDrei.
 
 Im letzten Kasten hatten wir einen numerischen und einen Zeichen (character) Vektor definiert. Es gibt in R neben diesen beiden noch zwei weiter häufige Datentypen: Faktoren und wahr/falsch-Einträge. Diese Typen betrachten wir ein anderes Mal.
 

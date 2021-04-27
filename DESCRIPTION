@@ -7,9 +7,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "lukas.kuld@udo.edu")
 Description: Bietet eine R-Einfuehrung und Material fuer Kurse an der TU Dortmund.
-Imports: learnr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports: 
+    learnr
